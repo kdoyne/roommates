@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
   belongs_to :house
   has_many :reminders
   has_secure_password
+
 end
