@@ -25,11 +25,17 @@ def edit
 end
 
 def update
+  binding.pry
   @user = current_user
   if params[:house_id] != nil
-    @user.house_id = params[:house_id]
-    @user.save
-    render json: @user
+    @house = House.find(params[:house_id])
+    if params[:passcode] == @house.passcode
+      @user.house_id = params[:house_id]
+      @user.save
+      render json: @user
+    else
+      render nothing: :true, status: 401
+    end
   else
     @user.update(user_params)
     redirect_to user_path

@@ -11,8 +11,10 @@ class HousesController < ApplicationController
 
   def create
     @house = House.new(house_params)
-    @house.save 
-    current_user.house = @house
+    @house.save
+    @user = current_user 
+    @user.house = @house
+    @user.save
     redirect_to house_path(@house)
   end
 
@@ -23,7 +25,7 @@ class HousesController < ApplicationController
   private 
 
   def house_params
-    params.require(:house).permit(:name, :street_address, :city, :state)
+    params.require(:house).permit(:name, :street_address, :city, :state, :passcode)
   end
 
 end
