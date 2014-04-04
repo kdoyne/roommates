@@ -1,6 +1,7 @@
 class Event < ActiveRecord::Base
-  validates :date_time, { presence: :true}
-  validates :title, { presence: :true}
+  validates :date, { presence: :true }
+  validates :time, { presence: :true }
+  validates :title, { presence: :true }
   belongs_to :house
 end
 

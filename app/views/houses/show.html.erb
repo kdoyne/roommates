@@ -15,6 +15,9 @@
     <label>
       Date <input type="date" name="date" />
     </label>
+    <label>
+      Time <input type="time" name="time" />
+    </label>
     <button>Save</button>
   </form>
 
@@ -24,6 +27,9 @@
 
 
 <script type="template" class="eventtemplate">
-  <%%=event.get("title")%><%%=event.get("date_time")%>
+  <span> Event: </span><%%=event.get("title")%>
+  <span> Date: </span><%%=event.get("date")%>
+  <span> Time: </span><%%=event.get("time")%>
+  <button class="delete_event">Delete</button>
 </script>
 

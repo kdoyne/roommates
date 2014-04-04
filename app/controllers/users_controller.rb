@@ -25,7 +25,6 @@ def edit
 end
 
 def update
-  binding.pry
   @user = current_user
   if params[:house_id] != nil
     @house = House.find(params[:house_id])
