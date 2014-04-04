@@ -5,3 +5,25 @@
 <%end%>
 </ul>
 
+<div class="events">
+
+  <form class="events">
+    <h3>New Event</h3>
+    <label>
+      Event <input type="text" name="event" />
+    </label>
+    <label>
+      Date <input type="date" name="date" />
+    </label>
+    <button>Save</button>
+  </form>
+
+  <ul id="events"> 
+  </ul>
+</div>
+
+
+<script type="template" class="eventtemplate">
+  <%%=event.get("title")%><%%=event.get("date_time")%>
+</script>
+
