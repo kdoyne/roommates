@@ -1,6 +1,6 @@
 
 
-var addUserToHouse = function() {
+var addUserToHouse = function(user) {
 
   var addDiv = function(){
     $("span#join_house").after("<div id=house>");
@@ -13,13 +13,20 @@ var addUserToHouse = function() {
     var data = {
       query: $("input").val()
     } 
+
+    var addHouse = function() {
+      $.ajax({ url: "/users/"+user , data: { house_id: this.id }, type: "PUT" })
+      .success(function(response){
+        window.location.replace("/houses/"+ response["house_id"])
+      });
+    }
+
     $.ajax({ url:"/houses",data: data}).done(function(response){
-      console.log(response.street_address)
       $("div#house").after("<ul>");
       $("ul").after("<li>");
       $("li").text(response.street_address +", "+ response.city +", "+ response.state)
-        .append($("<button id='confirm'>Confirm</button>"));
-        $("button#confirm").on("click", addHouse)
+        .append($("<button class='confirm'>Confirm</button>").attr("id", response.id));
+        $("button.confirm").on("click", addHouse)
       });
   }
 

@@ -1,17 +1,20 @@
-// var House = Backbone.Model.extend({
-//   urlRoot: "/houses"
-// });
+var House = Backbone.Model.extend({
+  urlRoot: "/houses"
+});
 
-// var HouseCollection = Backbone.Collection.extend({
-//   model: House,
-//   url: "/houses"
-// });
+var HouseCollection = Backbone.Collection.extend({
+  model: House,
+  url: "/houses"
+});
 
-// var HouseView = Backbone.View.extend({
+var AddToHouseView = Backbone.View.extend({
+  el: "button#submit",
+  events: {
+    "click": "addHouseToUser"
+  },
 
-//   initialize: function() {
-//     this.listenTo(this.model)
+  addHouseToUser: function(e){
+    e.preventDefault();
+  }
 
-//   }
-
-// });
+});

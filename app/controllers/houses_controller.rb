@@ -1,7 +1,7 @@
 class HousesController < ApplicationController
 
   def index
-    @house = House.find_by street_address: params[:query]
+    @house = House.find_by name: params[:query]
     render json: @house
   end
 
@@ -13,7 +13,6 @@ class HousesController < ApplicationController
     @house = House.new(house_params)
     @house.save 
     current_user.house = @house
-    current_user.save
     redirect_to house_path(@house)
   end
 
@@ -24,7 +23,7 @@ class HousesController < ApplicationController
   private 
 
   def house_params
-    params.require(:house).permit(:street_address, :city, :state)
+    params.require(:house).permit(:name, :street_address, :city, :state)
   end
 
 end

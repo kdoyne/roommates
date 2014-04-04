@@ -35,14 +35,17 @@ end
 gem 'httparty'
 
 group :development, :test do
+  gem 'ffaker'
   gem 'pry-rails'
   gem 'rspec-rails'
-  gem 'shoulda-matchers'
   gem 'capybara'
-  gem 'launchy'
+  gem 'shoulda-matchers'
   gem 'factory_girl_rails'
-  gem 'ffaker'
-  gem 'simplecov', '~> 0.8.0'
+  gem 'jasmine-rails'
+  gem 'simplecov'
+  gem 'launchy'
+  gem "capybara-webkit"
+  gem 'selenium-webdriver'
 end
 
 # Use ActiveModel has_secure_password

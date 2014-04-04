@@ -1,3 +1,7 @@
 <%= @house.street_address %>
-<%= @house.users[0].first_name %>
+<ul>
+<% @house.users.each do |user| %>
+<li><%= user.first_name%> <%=user.last_name %></li>
+<%end%>
+</ul>
 

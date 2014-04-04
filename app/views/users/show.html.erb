@@ -1,6 +1,6 @@
 <h2>User Page</h2>
 <p>Create a house and add your roommates!</p>
-<%= link_to "Create a house", house_path %>
+<%= link_to "Create a house", new_house_path %>
 <p>or join an existing house!</p>
 <span id="join_house">Click here to search for an existing house.</span><br>
 
@@ -9,8 +9,10 @@
 <%= @user.first_name %> <%=@user.last_name %>
 
 <script>
-$(document).ready(function(){
-addUserToHouse();
-});
+  var user = <%= current_user.id %>
+
+  $(document).ready(function(){
+  addUserToHouse(user);
+  });
 
 </script>
