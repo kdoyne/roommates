@@ -24,7 +24,7 @@ class SmsController < ApplicationController
           reply("Please try again")
         end
       else
-        reply("Please go online to register.")
+        reply("Please go online to register for RoommateHub.")
       end
     end
   end
