@@ -10,6 +10,10 @@ Roommates::Application.routes.draw do
     resources :reminders
   end
 
+  resources :bills
+
+  get '/sms', to: 'sms#method'
+
   get "/sessions", to: "sessions#new"
   post "/sessions", to: "sessions#create"
   delete "/sessions", to: "sessions#delete"

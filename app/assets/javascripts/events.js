@@ -8,7 +8,7 @@ var EventCollection = Backbone.Collection.extend({
 });
 
 var EventView = Backbone.View.extend({
-  $tagName: "li",
+  tagName: "li",
 
   initialize: function() {
     this.listenTo(this.model, "change", this.render);
@@ -29,18 +29,17 @@ var EventView = Backbone.View.extend({
     var rendered = _.template(template, {event: this.model});
     this.$el.html(rendered);
   }
-})
+});
 
 
 var EventFormView = Backbone.View.extend({
-  el: "form",
+  el: "form.events",
 
   events: {
     "submit": "createEvent"
   },
 
   createEvent: function(e){
-    console.log(this.el.elements["time"].value);
     e.preventDefault();
     var title = this.el.elements["event"].value;
     var date = this.el.elements["date"].value;

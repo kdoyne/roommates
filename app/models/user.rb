@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
   validates :phone_number, { presence: :true }
   validates :email, { presence: :true }
   belongs_to :house
-  has_many :reminders
+  has_many :events
+  has_many :bills
   has_secure_password
 
 end

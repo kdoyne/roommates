@@ -12,6 +12,8 @@ gem 'sass-rails', '~> 4.0.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
+gem 'twilio-ruby'
+
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 
@@ -23,6 +25,8 @@ gem 'jquery-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
+
+gem 'money'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
@@ -45,7 +49,8 @@ group :development, :test do
   gem 'simplecov'
   gem 'launchy'
   gem "capybara-webkit"
-  gem 'selenium-webdriver'
+  gem "selenium-webdriver"
+  gem "database_cleaner"
 end
 
 # Use ActiveModel has_secure_password

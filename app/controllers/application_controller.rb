@@ -15,6 +15,10 @@ class ApplicationController < ActionController::Base
     @users = Users.where(house_id: id)
   end
 
-  helper_method :current_user, :logged_in?, :house_id
+  def current_house
+    @current_house ||= House.find_by(id: current_user.house_id)
+  end
+
+  helper_method :current_user, :logged_in?, :house_users, :current_house
   
 end

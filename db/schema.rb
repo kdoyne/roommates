@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140404203035) do
+ActiveRecord::Schema.define(version: 20140406032506) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bills", force: true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.date     "due_date"
+    t.integer  "house_id"
+    t.decimal  "amount",     precision: 8, scale: 2
+  end
 
   create_table "events", force: true do |t|
     t.string   "title"
@@ -39,10 +49,11 @@ ActiveRecord::Schema.define(version: 20140404203035) do
   create_table "reminders", force: true do |t|
     t.integer  "event_id"
     t.string   "message"
-    t.datetime "remind_at"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "date"
+    t.time     "time"
   end
 
   create_table "users", force: true do |t|
@@ -50,10 +61,10 @@ ActiveRecord::Schema.define(version: 20140404203035) do
     t.string   "last_name"
     t.string   "email"
     t.string   "password_digest"
-    t.integer  "phone_number"
     t.integer  "house_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "phone_number"
   end
 
 end

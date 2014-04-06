@@ -6,5 +6,6 @@ FactoryGirl.define do
     street_address { Faker::Address.street_address }
     city { Faker::Address.city }
     state "NY"
+    passcode "passcode"
   end
 end
