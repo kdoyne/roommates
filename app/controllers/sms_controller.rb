@@ -10,7 +10,7 @@ class SmsController < ApplicationController
 
     unless @message_sender == "+1"+TWILIO_NUMBER
 
-      if !User.find_by(phone_number: "+1"+@message_sender).nil?
+      unless User.find_by(phone_number: "+1"+@message_sender).nil?
         @user = User.find_by(phone_number: @message_sender)
         @event = Event.new
         @event.user = @user
