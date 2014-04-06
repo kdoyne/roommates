@@ -1,3 +1,4 @@
+<br>
 <%= @house.street_address %>
 <h3>Roommates:</h3>
 <ul>
@@ -65,10 +66,10 @@
 
 <script type="template" class="billtemplate">
   <td> <%%= bill.get("name") %> </td>
-  <td> <%%= bill.get("amount") %> </td>
+  <td> <%%= "$"+bill.get("amount") %> </td>
   <td> <%%= bill.get("due_date") %> </td>
   <td> <%%= $("li#"+(bill.get("user_id"))).text().split(" - ")[0] %> </td>
-  <td> <%%= bill.get("amount")/($("ul").first().children().length) %> </td>
+  <td> <%%= "$"+bill.get("amount")/($("ul").first().children().length) %> </td>
   <td> <a href=mailto:<%%=$("li#"+(bill.get("user_id"))).text().split(" - ")[1]%>?cc=send@square.com&subject=Here&#39s&#32;$<%%= bill.get("amount") %> ><button class="send_money">Send Money </button></a></td>
   <td> <button class="delete_bill">Delete</button> </td>
 </script>

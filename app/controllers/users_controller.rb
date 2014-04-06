@@ -21,7 +21,9 @@ def show
   
 end
 
-def edit 
+def edit
+  @user = current_user
+  render(:edit) 
 end
 
 def update
@@ -31,13 +33,16 @@ def update
     if params[:passcode] == @house.passcode
       @user.house_id = params[:house_id]
       @user.save
-      render json: @user
+      respond_to do |format|
+        format.html { render :edit }
+        format.json { render json: @user }
+      end
     else
       render nothing: :true, status: 401
     end
   else
     @user.update(user_params)
-    redirect_to user_path
+    redirect_to house_path(id: current_user.house)
   end
 end
 

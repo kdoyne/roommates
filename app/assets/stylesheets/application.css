@@ -8,15 +8,32 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
  *= require_tree .
+ *= require_self
  */
 
 table {
   border: 1px solid black;
   margin: 10px;
+  width: 90%;
 }
 
 td {
   border: 1px solid black;
+  padding: 20px;
+}
+
+li {
+  list-style-type: none;
+}
+
+ul#events li:nth-child(odd) {
+  background-color: #eee
+}
+ul#events li:nth-child(even) {
+  background-color: #fff
+}
+
+li {
+  width: 60%;
 }

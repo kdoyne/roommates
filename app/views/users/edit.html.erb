@@ -1,0 +1,29 @@
+<h2> Edit My Info </h2>
+
+<%= form_for @user do |f| %>
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name %>
+
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name %>
+
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %>
+
+  <%= f.label :phone_number %>
+  <%= f.text_field :phone_number %>
+
+  <%= f.submit "Edit" %>
+<% end %> 
+
+<% if current_user %>
+  <%= form_tag user_path(@user), method: "delete" do%>
+    <%= submit_tag("Delete Account")%>
+  <%end%>
+<%end%>
