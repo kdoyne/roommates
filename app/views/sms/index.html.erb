@@ -1,0 +1,5 @@
+<% @all_messages.each do |message| %>
+  <% unless message.from == "+1"+TWILIO_NUMBER %>
+  <%= message.from %>   <%= message.body %><br>
+  <% end %>
+<% end %>

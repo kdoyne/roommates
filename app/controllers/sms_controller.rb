@@ -8,9 +8,9 @@ class SmsController < ApplicationController
     @date = @message_body.split(",")[1]
     @time = @message_body.split(",")[2]
 
-    unless @current_message_sender == "+1"+TWILIO_NUMBER
+    unless @message_sender == "+1"+TWILIO_NUMBER
 
-      if !User.find_by(phone_number: @current_message_sender).nil?
+      if !User.find_by(phone_number: "+1"+@message_sender).nil?
         @user = User.find_by(phone_number: @message_sender)
         @event = Event.new
         @event.user = @user
@@ -32,9 +32,9 @@ class SmsController < ApplicationController
   def reply(message)
     number_to_send_to = @message_sender
     @twilio_client = Twilio::REST::Client.new TWILIO_SID, TWILIO_AUTH_TOKEN
-    @twilio_client.account.sms.messages.create(
+    @twilio_client.account.messages.create(
       :from => "+1#{TWILIO_NUMBER}",
-      :to => number_to_send_to,
+      :to => +17046044609,
       :body => "#{message}"
       )
   end
