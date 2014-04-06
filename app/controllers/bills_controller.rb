@@ -9,7 +9,6 @@ class BillsController < ApplicationController
   end
 
   def create
-    binding.pry
     @bill = Bill.new(bill_params)
     @bill.user_id = current_user.id
     @bill.house_id = current_house.id
@@ -18,9 +17,6 @@ class BillsController < ApplicationController
     else
       render status: 400, nothing: true
     end
-  end
-
-  def new
   end
 
   def destroy

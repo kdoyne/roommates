@@ -1,39 +1,33 @@
 class EventsController < ApplicationController
 
-def index
-  @events = Event.order("date").where(house_id: current_house)
-  respond_to do |format|
-    format.html { render :index }
-    format.json { render json: @events }
+  def index
+    @events = Event.order("date").where(house_id: current_house)
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @events }
+    end
   end
-end
 
-def show
-end
-
-def create
-  @event = Event.new(event_params)
-  @event.user_id = current_user.id
-  @event.house_id = current_house.id
-  if @event.save
-    render json: @event
-  else
-    render status: 400, nothing: true
+  def create
+    @event = Event.new(event_params)
+    @event.user_id = current_user.id
+    @event.house_id = current_house.id
+    if @event.save
+      render json: @event
+    else
+      render status: 400, nothing: true
+    end
   end
-end
 
-def update
-end
+  def destroy
+    @event = Event.find(params[:id])
 
-def destroy
-  @event = Event.find(params[:id])
-
-  if @event.destroy 
-    render json: {}
-  else
-    render status: 400, nothing: true
+    if @event.destroy 
+      render json: {}
+    else
+      render status: 400, nothing: true
+    end
   end
-end
 
 private
 

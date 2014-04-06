@@ -8,7 +8,7 @@ var BillCollection = Backbone.Collection.extend({
 });
 
 var BillView = Backbone.View.extend({
-  tagName: "li",
+  tagName: "tr",
 
   initialize: function() {
     this.listenTo(this.model, "change", this.render);
@@ -52,7 +52,7 @@ var BillFormView = Backbone.View.extend({
 var bills = new BillCollection();
 
 var BillListView = Backbone.View.extend({
-  el: "ul#bills" ,
+  el: "table#bills" ,
   initialize: function(){
     this.listenTo(this.collection, "reset", this.addAll);
     this.listenTo(this.collection, "add", this.addOne);
