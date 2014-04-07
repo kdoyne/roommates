@@ -8,20 +8,22 @@
 </ul>
 
 <div class="events">
-
-  <form class="events">
-    <h3>Events</h3>
-    <label>
-      Event <input type="text" name="event" id="event" />
-    </label>
-    <label>
-      Date <input type="date" name="date" id="date" />
-    </label>
-    <label>
-      Time <input type="time" name="time" id="time" />
-    </label>
-    <button class="events">Save</button>
-  </form>
+  <h3>Events</h3>
+  <button class="new_event">Add A New Event</button>
+  <div class="new_event" style="display :none">
+    <form class="events">
+      <label>
+        Event <input type="text" name="event" id="event" />
+      </label>
+      <label>
+        Date <input type="date" name="date" id="date" />
+      </label>
+      <label>
+        Time <input type="time" name="time" id="time" />
+      </label>
+      <button class="events">Save</button>
+    </form>
+  </div>
 
   <ul id="events"> 
   </ul>
@@ -29,20 +31,22 @@
 
 
 <div class="bills">
-
-  <form class="bills">
-    <h3>Bills</h3>
-    <label>
-      Name <input type="text" name="name" id="name" />
-    </label>
-    <label>
-      Amount Due <input type="text" name="amount" id="amount" />
-    </label>
-    <label>
-      Due Date <input type="date" name="due_date" id="due_date" />
-    </label>
-    <button class="bills">Save</button>
-  </form>
+  <h3>Bills</h3>
+  <button class="new_bill">Add A New Bill</button>
+  <div class="new_bill" style="display :none">
+    <form class="bills">
+      <label>
+        Name <input type="text" name="name" id="name" />
+      </label>
+      <label>
+        Amount Due <input type="text" name="amount" id="amount" />
+      </label>
+      <label>
+        Due Date <input type="date" name="due_date" id="due_date" />
+      </label>
+      <button class="bills">Save</button>
+    </form>
+  </div>
 
   <table id="bills">
   <tr>
@@ -73,4 +77,20 @@
   <td> <a href=mailto:<%%=$("li#"+(bill.get("user_id"))).text().split(" - ")[1]%>?cc=send@square.com&subject=Here&#39s&#32;$<%%= bill.get("amount") %> ><button class="send_money">Send Money </button></a></td>
   <td> <button class="delete_bill">Delete</button> </td>
 </script>
+<script type="text/javascript">
+  $("button.new_event").click(function () {
+    if ( $( "div.new_event" ).is( ":hidden" ) ) {
+      $( "div.new_event" ).slideDown( "slow" );
+    } else {
+      $( "div.new_event" ).hide();
+    }
+  });
 
+   $("button.new_bill").click(function () {
+    if ( $( "div.new_bill" ).is( ":hidden" ) ) {
+      $( "div.new_bill" ).slideDown( "slow" );
+    } else {
+      $( "div.new_bill" ).hide();
+    }
+  });
+</script>

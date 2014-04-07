@@ -12,6 +12,18 @@
  *= require_self
  */
 
+div.events {
+  width: 40%;
+  display: block;
+  /*background-color: rgb(129,182,213);*/
+}
+
+div.bills {
+  width: 40%;
+  display: inline-block;
+  /*background-color: rgb(129,182,213);*/
+}
+
 table {
   border: 1px solid black;
   margin: 10px;
@@ -20,7 +32,7 @@ table {
 
 td {
   border: 1px solid black;
-  padding: 20px;
+  padding: 0px 20px;
 }
 
 li {
@@ -28,12 +40,14 @@ li {
 }
 
 ul#events li:nth-child(odd) {
-  background-color: #eee
+  background-color: rgb(129,182,213)
 }
 ul#events li:nth-child(even) {
-  background-color: #fff
+  background-color: rgb(201,226,237)
 }
 
-li {
-  width: 60%;
+button {
+  /*background-color: rgb(50,114,149);*/
+  border-radius: 5px;
 }
+
