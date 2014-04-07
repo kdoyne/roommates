@@ -12,6 +12,7 @@ class BillsController < ApplicationController
     @bill = Bill.new(bill_params)
     @bill.user_id = current_user.id
     @bill.house_id = current_house.id
+    @bill.split = @bill.amount / (current_house.users).count
     if @bill.save
       render json: @bill
     else
