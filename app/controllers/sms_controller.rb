@@ -4,7 +4,7 @@ class SmsController < ApplicationController
     @client = Twilio::REST::Client.new TWILIO_SID, TWILIO_AUTH_TOKEN
     @message_body = @client.account.messages.list[0].body
     # @message_sender = @client.account.messages.list[0].from
-    @message_sender = params[:From].slice("+1")
+    @message_sender = params[:From][2..11]
     @title = @message_body.split(",")[0]
     @date = @message_body.split(",")[1]
     @time = @message_body.split(",")[2]
