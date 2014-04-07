@@ -12,27 +12,84 @@
  *= require_self
  */
 
-div.events {
+/*rgb(185,208,107) yellowgreen*/
+/*rgb(85,109,80) dark green*/
+/*rgb(130,175,116) med green*/
+/*rgb(190, 221, 167) light green*/
+/*rgb(219,223,221) grey*/
+/*rgb(244,244,225) tan*/
+ 
+
+body {
+  /*background-color: rgb(130,175,116)*/
+}
+
+#wrapper{
+  width: 90%;
+  /*background-color: rgb(190, 221, 167); */
+  height: 100%;
+  margin: 10px auto;
+  border-radius: 10px;
+  padding: 0px 20px;
+  border: 1px solid black;
+}
+
+header {
+  /*background-color: rgb(190, 221, 167);*/
+  padding: 10px;
+}
+
+div.roommates {
+  padding: 10px;
   width: 80%;
   display: block;
-  /*background-color: rgb(129,182,213);*/
+  /*background-color: rgb(244,244,225);*/
+  border: 1px solid black;
+  margin: 20px auto;
+  border-radius: 10px;
+}
+
+div.events {
+  padding: 10px;
+  width: 80%;
+  display: block;
+  /*background-color: rgb(244,244,225);*/
+  border: 1px solid black;
+  margin: 20px auto;
+  border-radius: 10px;
+}
+
+h3 {
+  margin-left: 10px;
+}
+
+div form {
+  /*background-color: rgb(244,244,225);*/
 }
 
 div.bills {
-  width: 40%;
-  display: inline-block;
-  /*background-color: rgb(129,182,213);*/
+  padding: 10px;
+  width: 80%;
+  display: block;
+  /*background-color: rgb(244,244,225);*/
+  border: 1px solid black;
+  margin: 20px auto;
+  border-radius: 10px;
 }
 
 table {
   border: 1px solid black;
   margin: 10px;
-  width: 90%;
 }
 
 td {
   border: 1px solid black;
   padding: 0px 20px;
+  width: 100px;
+}
+
+thead {
+  background-color: rgb(219,223,221);
 }
 
 li {
@@ -46,8 +103,68 @@ ul#events li:nth-child(even) {
   /*background-color: rgb(201,226,237)*/
 }
 
-button {
-  /*background-color: rgb(50,114,149);*/
-  /*border-radius: 5px;*/
+form {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
 }
+input {
+  width: 150px;
+}
+
+button {
+  border: 1px solid grey;
+  background-color: rgb(219,223,221);
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+a:visited {
+  color: black;
+}
+
+a {
+  color: black;
+}
+
+#splash {
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#login {
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+form#loginform {
+  border: 0px;
+}
+
+form#loginform input{
+  display: block;
+  margin: 0 auto;
+}
+
+#register {
+  text-align: center;
+  border: 0px;
+}
+
+form#registerform {
+  width: 50%;
+  margin: 0 auto;
+}
+
+#register input {
+  margin: 5px;
+}
+
+
 

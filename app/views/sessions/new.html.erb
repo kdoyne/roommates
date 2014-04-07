@@ -1,9 +1,12 @@
-<h2>Log In</h2>
+<div id="login">
 
-<%= form_tag sessions_path do %>
-  <%= label_tag :email %>
-  <%= email_field_tag :email %>
-  <%= label_tag :password %>
-  <%= password_field_tag :password %>
-  <%= submit_tag "Log In!" %>
-<% end %>
+  <h2>Log In</h2>
+
+  <%= form_tag sessions_path, :id => 'loginform' do %>
+    <%= label_tag :email %>
+    <%= email_field_tag :email %>
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
+    <%= submit_tag "Log In!" %>
+  <% end %>
+</div>

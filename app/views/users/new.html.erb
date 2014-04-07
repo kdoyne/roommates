@@ -1,23 +1,25 @@
-<h2> Register for Roommates! </h2>
+<div id="register">
+  <h2> Register for Roommates! </h2>
 
-<%= form_for @user do |f| %>
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name %>
+  <%= form_for @user, :id => 'registerform' do |f| %>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %><br>
 
-  <%= f.label :last_name %>
-  <%= f.text_field :last_name %>
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %><br>
 
-  <%= f.label :email %>
-  <%= f.email_field :email %>
+    <%= f.label :email %>
+    <%= f.email_field :email %><br>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
+    <%= f.label :password %>
+    <%= f.password_field :password %><br>
 
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %><br>
 
-  <%= f.label :phone_number %>
-  <%= f.text_field :phone_number %>
+    <%= f.label :phone_number %>
+    <%= f.text_field :phone_number %><br>
 
-  <%= f.submit "Join!" %>
-<% end %> 
+    <%= f.submit "Join!" %>
+  <% end %> 
+</div>

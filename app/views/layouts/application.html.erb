@@ -7,11 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header>
+    <span><%= link_to("Log Out #{User.find_by(id:session[:user_id]).first_name}", "/sessions", method:"delete") unless session[:user_id].nil? %></span>
+    <span><%= link_to("Edit My Info", edit_user_path(current_user)) unless session[:user_id].nil? %></span>
+  </header>
 
-<%= link_to("Log Out #{User.find_by(id:session[:user_id]).first_name}", "/sessions", method:"delete") unless session[:user_id].nil? %>
-<%= link_to("Edit My Info", edit_user_path(current_user)) unless session[:user_id].nil? %>
-
-<%= yield %>
+<div id="wrapper">
+  <%= yield %>
+</div>
 
 </body>
 </html>
