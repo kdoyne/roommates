@@ -12,9 +12,10 @@ var addUserToHouse = function(user) {
     };
 
     var addHouse = function() {
+      var id = this.id;
       $.ajax({ url: "/users/"+user , data: { house_id: this.id, passcode: $("input#passcode").val() }, type: "PUT" })
       .success(function(response){
-        window.location.replace("/houses/"+ response["house_id"])
+        window.location.replace("/houses/"+ id)
       });
     };
 

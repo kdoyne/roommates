@@ -1,104 +1,105 @@
+<% if current_user.house = @house %>
+  <br>
+  <h2> <%= @house.name %> </h2>
+  <h4> <%= @house.street_address %> </h4>
 
-<br>
-<h2> <%= @house.name %> </h2>
-<h4> <%= @house.street_address %> </h4>
-
-<div class="roommates">
-  <h3>Roommates:</h3>
-  <ul>
-    <% @house.users.each do |user| %>
-      <li id="<%=user.id%>"><%= user.first_name%> - <%= user.email%> - <%= user.phone_number%> </li>
-    <%end%>
-  </ul>
-</div>
-
-<div class="events">
-  <h3>Events</h3>
-  <button class="new_event">Add A New Event</button>
-  <div class="new_event" style="display :none">
-    <form class="events">
-      <label>
-        Event <input type="text" name="event" id="event" />
-      </label>
-      <label>
-        Date <input type="date" name="date" id="date" />
-      </label>
-      <label>
-        Time <input type="time" name="time" id="time" />
-      </label>
-      <button class="events">Save</button>
-    </form>
+  <div class="roommates">
+    <h3>Roommates:</h3>
+    <ul>
+      <% @house.users.each do |user| %>
+        <li id="<%=user.id%>"><%= user.first_name%> - <%= user.email%> - <%= user.phone_number%> </li>
+      <%end%>
+    </ul>
   </div>
 
-  <ul id="events"> 
-  </ul>
-</div>
+  <div class="events">
+    <h3>Events</h3>
+    <button class="new_event">Add A New Event</button>
+    <div class="new_event" style="display :none">
+      <form class="events">
+        <label>
+          Event <input type="text" name="event" id="event" />
+        </label>
+        <label>
+          Date <input type="date" name="date" id="date" />
+        </label>
+        <label>
+          Time <input type="time" name="time" id="time" />
+        </label>
+        <button class="events">Save</button>
+      </form>
+    </div>
 
-
-<div class="bills">
-  <h3>Bills</h3>
-  <button class="new_bill">Add A New Bill</button>
-  <div class="new_bill" style="display :none">
-    <form class="bills">
-      <label>
-        Name <input type="text" name="name" id="name" />
-      </label>
-      <label>
-        Amount Due <input type="text" name="amount" id="amount" />
-      </label>
-      <label>
-        Due Date <input type="date" name="due_date" id="due_date" />
-      </label>
-      <button class="bills">Save</button>
-    </form>
+    <ul id="events"> 
+    </ul>
   </div>
 
-  <table id="bills">
-    <thead>
-      <tr>
-        <th> Bill: </th>
-        <th> Amount Due: </th>
-        <th> Date Due: </th>
-        <th> Added By: </th>
-        <th> Split: </th>
-        <th> Pay: </th>
-        <th> </th>
-      <tr>
-    </thead>
-  </table>
-</div>
 
-<script type="template" class="eventtemplate">
-  <span> Event: <%%= event.get("title") %></span>
-  <span> Date: <%%= event.get("date") %></span>
-  <span> Time: <%%= event.get("time") %></span>
-  <span> Added By: <%%= $("li#"+(event.get("user_id"))).text().split(" - ")[0] %></span>
-  <button class="delete_event">Delete</button>
-</script>
+  <div class="bills">
+    <h3>Bills</h3>
+    <button class="new_bill">Add A New Bill</button>
+    <div class="new_bill" style="display :none">
+      <form class="bills">
+        <label>
+          Name <input type="text" name="name" id="name" />
+        </label>
+        <label>
+          Amount Due <input type="text" name="amount" id="amount" />
+        </label>
+        <label>
+          Due Date <input type="date" name="due_date" id="due_date" />
+        </label>
+        <button class="bills">Save</button>
+      </form>
+    </div>
 
-<script type="template" class="billtemplate">
-  <td> <%%= bill.get("name") %> </td>
-  <td> <%%= "$"+bill.get("amount") %> </td>
-  <td> <%%= bill.get("due_date") %> </td>
-  <td> <%%= $("li#"+(bill.get("user_id"))).text().split(" - ")[0] %> </td>
-  <td> <%%= "$"+bill.get("amount")/($("ul").first().children().length) %> </td>
-  <td> <a href=mailto:<%%=$("li#"+(bill.get("user_id"))).text().split(" - ")[1]%>?cc=send@square.com&body=For&#32<%%=bill.get("name")%>&subject=Here&#39s&#32;<%%= "$"+bill.get("amount")/($("ul").first().children().length) %> ><button class="send_money">Send Money </button></a></td>
-  <td> <button class="delete_bill">Delete</button> </td>
-</script>
-<script type="text/javascript">
-  $("button.new_event").click(function () {
-    if ( $( "div.new_event" ).is( ":hidden" ) ) {
-      $( "div.new_event" ).slideDown( "slow" );
-    } else {
-      $( "div.new_event" ).hide();
-    }
-  });
+    <table id="bills">
+      <thead>
+        <tr>
+          <th> Bill: </th>
+          <th> Amount Due: </th>
+          <th> Date Due: </th>
+          <th> Added By: </th>
+          <th> Split: </th>
+          <th> Pay: </th>
+          <th> </th>
+        <tr>
+      </thead>
+    </table>
+  </div>
 
-   $("button.new_bill").click(function () {
-    if ( $( "div.new_bill" ).is( ":hidden" ) ) {
-      $( "div.new_bill" ).slideDown( "slow" );
-    } else {
-      $( "div.new_bill" ).hide();
-    }
-  });
-</script>
+  <script type="template" class="eventtemplate">
+    <span> Event: <%%= event.get("title") %></span>
+    <span> Date: <%%= event.get("date") %></span>
+    <span> Time: <%%= event.get("time") %></span>
+    <span> Added By: <%%= $("li#"+(event.get("user_id"))).text().split(" - ")[0] %></span>
+    <button class="delete_event">Delete</button>
+  </script>
+
+  <script type="template" class="billtemplate">
+    <td> <%%= bill.get("name") %> </td>
+    <td> <%%= "$"+bill.get("amount") %> </td>
+    <td> <%%= bill.get("due_date") %> </td>
+    <td> <%%= $("li#"+(bill.get("user_id"))).text().split(" - ")[0] %> </td>
+    <td> <%%= "$"+bill.get("amount")/($("ul").first().children().length) %> </td>
+    <td> <a href=mailto:<%%=$("li#"+(bill.get("user_id"))).text().split(" - ")[1]%>?cc=send@square.com&body=For&#32<%%=bill.get("name")%>&subject=Here&#39s&#32;<%%= "$"+bill.get("amount")/($("ul").first().children().length) %> ><button class="send_money">Send Money </button></a></td>
+    <td> <button class="delete_bill">Delete</button> </td>
+  </script>
+  <script type="text/javascript">
+    $("button.new_event").click(function () {
+      if ( $( "div.new_event" ).is( ":hidden" ) ) {
+        $( "div.new_event" ).slideDown( "slow" );
+      } else {
+        $( "div.new_event" ).hide();
+      }
+    });
+
+     $("button.new_bill").click(function () {
+      if ( $( "div.new_bill" ).is( ":hidden" ) ) {
+        $( "div.new_bill" ).slideDown( "slow" );
+      } else {
+        $( "div.new_bill" ).hide();
+      }
+    });
+  </script>
+<%end%>

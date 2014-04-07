@@ -32,6 +32,7 @@ body {
   border-radius: 10px;
   padding: 0px 20px;
   border: 1px solid black;
+  padding-bottom: 20px;
 }
 
 header {
@@ -108,8 +109,11 @@ form {
   border-radius: 10px;
   padding: 10px;
 }
+
 input {
   width: 150px;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 button {
@@ -166,5 +170,8 @@ form#registerform {
   margin: 5px;
 }
 
+span#join_house {
+  text-decoration: underline;
+}
 
 

@@ -8,6 +8,7 @@ describe "a user can add calendar events", :js => true  do
 
     login(user)
     save_and_open_page
+    click_button "Add A New Event"
     fill_in :event, with: "party"
     fill_in :date, with: "04/29/2014"
     fill_in :time, with: "10:30 PM"

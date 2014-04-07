@@ -1,14 +1,15 @@
 <h2>User Page</h2>
 
-<p>Create a house and add your roommates!</p>
-<%= link_to "Create a house", new_house_path %>
-<p>or join an existing house!</p>
-<span id="join_house">Click here to search for an existing house.</span><br>
+<p><%= link_to "Create", new_house_path %>
+ a house and add your roommates!</p>
 
+<p>or</p>
+<span id="join_house">Search</span> for an existing house.<br>
+<br>
 <%= link_to "Edit my info", edit_user_path %>
 
-<%= @user.first_name %> <%=@user.last_name %>
 
+<br>
 <script>
   var user = <%= current_user.id %>
 

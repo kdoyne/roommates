@@ -19,7 +19,12 @@ class HousesController < ApplicationController
   end
 
   def show
-    @house = House.find(params[:id])
+    if current_user.house.id != params[:id].to_i
+      render nothing: true, status: 401
+    else
+      @house = House.find(params[:id])
+      render(:show)
+    end
   end
 
   private 

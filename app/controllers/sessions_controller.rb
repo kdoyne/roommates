@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
         redirect_to( house_path(user.house_id))
       end
     else
-      redirect_to("/login")
+      redirect_to("/sessions")
     end
   end
 

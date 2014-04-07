@@ -35,7 +35,7 @@ def update
       @user.save
       respond_to do |format|
         format.html { render :edit }
-        format.json { render json: @user }
+        format.json { render json: @user.house }
       end
     else
       render nothing: :true, status: 401
@@ -43,6 +43,16 @@ def update
   else
     @user.update(user_params)
     redirect_to house_path(id: current_user.house)
+  end
+end
+
+def destroy
+  if @user = current_user || current_user.is_admin?
+    session[:user_id] = nil
+    @user.destroy
+    redirect_to root_path
+  else
+    render nothing: true, status: 401
   end
 end
 
