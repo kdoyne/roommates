@@ -25,6 +25,7 @@ class SmsController < ApplicationController
           @event.save
         else
           reply("Please try again #{@event.user.first_name} + #{@event.title} + #{@date}+#{@time}+#{@event.house.id}")
+          @event.save
         end
       else
         reply("Please go online to register for RoommateHub.")
