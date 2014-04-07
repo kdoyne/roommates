@@ -19,7 +19,7 @@ class SmsController < ApplicationController
         @event.date = @date
         @event.time = @time
         @event.house = @user.house
-        if @event.save? 
+        if @event.created_at != nil 
           reply("confirmed!")
         else
           reply("Please try again")
