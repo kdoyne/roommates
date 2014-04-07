@@ -19,10 +19,11 @@ class SmsController < ApplicationController
         @event.date = @date
         @event.time = @time
         @event.house = @user.house
+        @event.save
         if @event.created_at != nil 
           reply("confirmed!")
         else
-          reply("Please try again")
+          reply("Please try again" + @event.user + @event.title + @event.date)
         end
       else
         reply("Please go online to register for RoommateHub.")
