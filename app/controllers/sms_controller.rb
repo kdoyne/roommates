@@ -6,7 +6,8 @@ class SmsController < ApplicationController
     # @message_sender = @client.account.messages.list[0].from
     @message_sender = params[:From][2..11]
     @title = @message_body.split(",")[0]
-    @date = @message_body.split(",")[1].split("/").reverse.join("/")
+    @date_array = @message_body.split(",")[1].split("/")
+    @date = @date_array[2]+"/"+@date_array[0]+"/"+@date_array[1]
     @time = @message_body.split(",")[2]
 
     unless @message_sender == "+1"+TWILIO_NUMBER
