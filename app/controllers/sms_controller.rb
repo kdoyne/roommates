@@ -23,7 +23,7 @@ class SmsController < ApplicationController
         if @event.created_at != nil 
           reply("confirmed!")
         else
-          reply("Please try again #{@event.user.name} + #{@event.title} + #{@date}+#{@time}")
+          reply("Please try again #{@event.user.first_name} + #{@event.title} + #{@date}+#{@time}")
         end
       else
         reply("Please go online to register for RoommateHub.")
