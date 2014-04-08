@@ -3,7 +3,7 @@
   <div id="house_info">
     <h1> <%= @house.name %> </h1>
     <h3> <%= @house.street_address %> </h3>
-    
+
     <ul>
       <% @house.users.each do |user| %>
         <li id="<%=user.id%>"><%= user.first_name%> - <%= user.email%> - <%= user.phone_number%> </li>
@@ -90,10 +90,10 @@
 
 
   <script type="text/template" class="eventtemplate">
-    <span> Event: <%%= event.get("title") %></span>
-    <span> Date: <%%= event.get("date") %></span>
-    <span> Time: <%%= event.get("time") %></span>
-    <span> Added By: <%%= $("li#"+(event.get("user_id"))).text().split(" - ")[0] %></span>
+    <span><strong> Event: </strong><%%= event.get("title") %></span>
+    <span><strong> Date: </strong><%%= event.get("date") %></span>
+    <span><strong> Time: </strong><%%= event.get("time") %></span>
+    <span><strong> Added By: </strong><%%= $("li#"+(event.get("user_id"))).text().split(" - ")[0] %></span>
     <button class="delete_event">Delete</button>
   </script>
 
@@ -119,16 +119,20 @@
     <% end %>
     
 
-    $("button.new_event").click(function() {
-      if ( $("div.new_event").is(":hidden") ) {
+    $("button.new_event").click(function(){
+      if ($("div.new_event").is(":hidden")){
         $("div.new_event").slideDown("slow");
       } else {
         $("div.new_event").hide();
       }
     });
 
-    $("button.new_bill").click(function() {
-      if ( $("div.new_bill").is(":hidden") ) {
+    var createDeleteEvent = function(){
+      $(<button>).text("Delete").addClass("delete_event");
+    };
+
+    $("button.new_bill").click(function(){
+      if($("div.new_bill").is(":hidden")){
         $("div.new_bill").slideDown("slow");
       } else {
         $("div.new_bill").hide();
@@ -136,8 +140,8 @@
     });
 
 
-    $("button.new_shopping").click(function() {
-      if ( $("div.new_shopping").is(":hidden") ) {
+    $("button.new_shopping").click(function(){
+      if($("div.new_shopping").is(":hidden")){
         $("div.new_shopping").slideDown("slow");
       } else {
         $("div.new_shopping").hide();
