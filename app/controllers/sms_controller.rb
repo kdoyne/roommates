@@ -13,21 +13,29 @@ class SmsController < ApplicationController
     unless @message_sender == "+1"+TWILIO_NUMBER
 
       unless User.find_by("phone_number = :phone_number", {:phone_number => @message_sender}).nil?
+
+        # finds user and house in database and makes event
         @user = User.find_by("phone_number = :phone_number", {:phone_number => @message_sender})
-        @event = Event.new
-        @event.user = @user
-        @event.title = @title
-        @event.date = @date
-        @event.time = @time
-        @event.house = @user.house
-        @event.save
-        if @event.created_at != nil 
-          reply("confirmed!")
-          # @event.save
-        else
-          reply("Please try again")
+        @house = House.find_by(id: @user.house_id)
+
+        if @house.events.find_by(date: @date) == nil
+          @event = Event.new
+          @event.user = @user
+          @event.title = @title
+          @event.date = @date
+          @event.time = @time
+          @event.house = @user.house
+          @event.save
+          if @event.created_at != nil 
+            reply("confirmed!")
+          else
+            reply("Please try again")
+          end
+        else 
+          reply("There is already an event on that date")
         end
       else
+        # sends if a phone number is not found in the database.
         reply("Please go online to register for RoommateHub.")
       end
     end

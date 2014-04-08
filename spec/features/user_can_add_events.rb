@@ -1,13 +1,11 @@
 require 'spec_helper'
 
 describe "a user can add calendar events", :js => true  do
-  let!(:house) {FactoryGirl.create(:house) } 
-  let!(:user) { FactoryGirl.create(:user, house_id: house.id) }
+  let!(:user) { FactoryGirl.create(:user) }
 
   it "lets a user add and view an event" do
 
     login(user)
-    save_and_open_page
     click_button "Add A New Event"
     fill_in :event, with: "party"
     fill_in :date, with: "04/29/2014"

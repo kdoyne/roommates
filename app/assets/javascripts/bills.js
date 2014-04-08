@@ -49,8 +49,6 @@ var BillFormView = Backbone.View.extend({
 
 });
 
-var bills = new BillCollection();
-
 var BillListView = Backbone.View.extend({
   el: "table#bills" ,
   initialize: function(){
@@ -69,10 +67,10 @@ var BillListView = Backbone.View.extend({
 });
 
 $(document).ready(function(){
-  var bills = new BillCollection();
-  var billListView = new BillListView({collection: bills});
-  var billFormView = new BillFormView({collection: bills});
-  bills.fetch();
+  Roommates.bills = new BillCollection();
+  Roommates.billListView = new BillListView({collection: Roommates.bills});
+  Roommates.billFormView = new BillFormView({collection: Roommates.bills});
+  Roommates.bills.fetch();
 });
 
 

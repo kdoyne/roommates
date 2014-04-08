@@ -50,8 +50,6 @@ var EventFormView = Backbone.View.extend({
 
 });
 
-//var cal_events = new EventCollection();
-
 var EventListView = Backbone.View.extend({
   el: "ul#events" ,
   initialize: function(){
