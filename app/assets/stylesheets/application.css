@@ -20,19 +20,25 @@
 /*rgb(244,244,225) tan*/
  
 h1 {
-  font-family: 'Abril Fatface', cursive;
+  font-family: 'Droid Sans', sans-serif;
+  font-weight: 700;
 }
 
 h2 {
-  font-family: 'Abril Fatface', cursive;
+  font-family: 'Droid Sans', sans-serif;
+  font-weight: 700;
 }
 
 h3 {
-  font-family: 'Abril Fatface', cursive;
+  font-family: 'Droid Sans', sans-serif;
+  font-weight: 700;
+  margin-left: 10px;
 }
 
 body {
-   background-color: rgb(190, 221, 167); 
+  background-color: rgb(190, 221, 167); 
+  font-family: 'Droid Sans', sans-serif;
+  font-weight: 400;
 }
 
 #wrapper{
@@ -85,11 +91,6 @@ div.shopping {
   background-color: rgb(244,244,225);
   margin: 20px auto;
   border-radius: 10px;
-}
-
-
-h3 {
-  margin-left: 10px;
 }
 
 div form {
