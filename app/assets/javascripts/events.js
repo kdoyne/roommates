@@ -50,7 +50,7 @@ var EventFormView = Backbone.View.extend({
 
 });
 
-var cal_events = new EventCollection();
+//var cal_events = new EventCollection();
 
 var EventListView = Backbone.View.extend({
   el: "ul#events" ,
@@ -70,8 +70,8 @@ var EventListView = Backbone.View.extend({
 });
 
 $(document).ready(function(){
-  var events = new EventCollection();
-  var eventListView = new EventListView({collection: events});
-  var eventFormView = new EventFormView({collection: events});
-  events.fetch();
+  Roommates.events = new EventCollection();
+  Roommates.eventListView = new EventListView({collection: Roommates.events});
+  Roommates.eventFormView = new EventFormView({collection: Roommates.events});
+  Roommates.events.fetch();
 });

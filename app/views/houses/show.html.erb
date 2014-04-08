@@ -69,37 +69,45 @@
     </table>
   </div>
 
-  <script type="template" class="eventtemplate">
+
+  <script type="text/template" class="eventtemplate">
     <span> Event: <%%= event.get("title") %></span>
     <span> Date: <%%= event.get("date") %></span>
     <span> Time: <%%= event.get("time") %></span>
-    <span> Added By: <%%= $("li#"+(event.get("user_id"))).text().split(" - ")[0] %></span>
+    <span> Added By: <%%= _.find(Roommates.users, function(user){return user.id == event.get("user_id")}).name %></span>
     <button class="delete_event">Delete</button>
   </script>
 
-  <script type="template" class="billtemplate">
+  <script type="text/template" class="billtemplate">
     <td> <%%= bill.get("name") %> </td>
     <td> <%%= "$"+bill.get("amount") %> </td>
     <td> <%%= bill.get("due_date") %> </td>
-    <td> <%%= $("li#"+(bill.get("user_id"))).text().split(" - ")[0] %> </td>
+    <td> <%%= _.find(Roommates.users, function(user){return user.id == bill.get("user_id")}).name  %> </td>
     <td> <%%= "$"+bill.get("split") %> </td>
-    <td> <a href=mailto:<%%=$("li#"+(bill.get("user_id"))).text().split(" - ")[1]%>?cc=send@square.com&body=For&#32<%%=bill.get("name")%>&subject=Here&#39s&#32;<%%= "$"+(bill.get("amount")/($("ul").first().children().length)) %> ><button class="send_money">Send Money </button></a></td>
+    <td> <a href=mailto:<%%=_.find(Roommates.users, function(user){return user.id == bill.get("user_id")}).email%>?cc=send@square.com&body=For&#32<%%=bill.get("name")%>&subject=Here&#39s&#32;<%%= "$"+bill.get("split") %> ><button class="send_money">Send Money </button></a></td>
     <td> <button class="delete_bill">Delete</button> </td>
   </script>
+
   <script type="text/javascript">
-    $("button.new_event").click(function () {
-      if ( $( "div.new_event" ).is( ":hidden" ) ) {
-        $( "div.new_event" ).slideDown( "slow" );
+    Roommates.users = [];
+    <% @house.users.each do |user| %>
+    Roommates.users.push({id:<%= user.id%>, name: "<%= user.first_name%>", email: "<%= user.email%>"});
+    <% end %>
+    
+
+    $("button.new_event").click(function() {
+      if ( $("div.new_event").is(":hidden") ) {
+        $("div.new_event").slideDown("slow");
       } else {
-        $( "div.new_event" ).hide();
+        $("div.new_event").hide();
       }
     });
 
-     $("button.new_bill").click(function () {
-      if ( $( "div.new_bill" ).is( ":hidden" ) ) {
-        $( "div.new_bill" ).slideDown( "slow" );
+     $("button.new_bill").click(function() {
+      if ( $("div.new_bill").is(":hidden") ) {
+        $("div.new_bill").slideDown("slow");
       } else {
-        $( "div.new_bill" ).hide();
+        $("div.new_bill").hide();
       }
     });
   </script>

@@ -15,4 +15,10 @@
 //= require turbolinks
 //= require underscore
 //= require backbone
-//= require_tree .
+//= require_self
+//= require events
+//= require bills
+//= require reminders
+//= require add_house_to_user
+
+var Roommates = {};
