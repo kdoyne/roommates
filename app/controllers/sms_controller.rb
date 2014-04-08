@@ -5,10 +5,6 @@ class SmsController < ApplicationController
     # format for texts: Title, Date, Time
     @message_body = @client.account.messages.list[0].body
     @message_sender = params[:From][2..11]
-    @title = @message_body.split(",")[0]
-    @date_array = @message_body.gsub(" ","").split(",")[1].split("/")
-    @date = @date_array[2]+"/"+@date_array[0]+"/"+@date_array[1]
-    @time = @message_body.split(",")[2]
 
     unless @message_sender == "+1"+TWILIO_NUMBER
 
@@ -18,27 +14,39 @@ class SmsController < ApplicationController
         @user = User.find_by("phone_number = :phone_number", {:phone_number => @message_sender})
         @house = House.find_by(id: @user.house_id)
 
-        # searches database for events from that house that are on the same date
-        if @house.events.find_by(date: @date) == nil
+        if @message_body.split(" ")[0] == "shopping"
+          @shopping_list = house.shopping.map { |shopping| shopping.item }
+          @list = shopping_list.join(" , ")
+          reply(@list)
+          
+        else
+          # searches database for events from that house that are on the same date
+          if @house.events.find_by(date: @date) == nil
+            # get info from message
+            @title = @message_body.split(",")[0]
+            @date_array = @message_body.gsub(" ","").split(",")[1].split("/")
+            @date = @date_array[2]+"/"+@date_array[0]+"/"+@date_array[1]
+            @time = @message_body.split(",")[2]
 
-          # creates event
-          @event = Event.new
-          @event.user = @user
-          @event.title = @title
-          @event.date = @date
-          @event.time = @time
-          @event.house = @user.house
-          @event.save
-          if @event.created_at != nil
-              # if event is created 
-            reply("confirmed!")
-          else
-            # if event could not be saved
-            reply("Please try again")
+            # creates event
+            @event = Event.new
+            @event.user = @user
+            @event.title = @title
+            @event.date = @date
+            @event.time = @time
+            @event.house = @user.house
+            @event.save
+            if @event.created_at != nil
+                # if event is created 
+              reply("confirmed!")
+            else
+              # if event could not be saved
+              reply("Please try again")
+            end
+          else 
+            # if there is an event on the same date
+            reply("There is already an event on that date")
           end
-        else 
-          # if there is an event on the same date
-          reply("There is already an event on that date")
         end
       else
         # sends if a phone number is not found in the database.
