@@ -15,10 +15,10 @@ class SmsController < ApplicationController
         @house = House.find_by(id: @user.house_id)
 
         if @message_body.split(" ")[0] == "shopping"
-          @shopping_list = house.shopping.map { |shopping| shopping.item }
+          @shopping_list = @house.shopping.map { |shopping| shopping.item }
           @list = shopping_list.join(" , ")
           reply(@list)
-          
+
         else
           # searches database for events from that house that are on the same date
           if @house.events.find_by(date: @date) == nil
