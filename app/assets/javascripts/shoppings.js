@@ -16,12 +16,19 @@ var ShoppingView = Backbone.View.extend({
   },
 
   events: {
-    "click button.delete_shopping": "destroy"
+    "click button.delete_shopping": "destroy",
+    "change input[type='checkbox']": "togglePurchased"
   },
 
   destroy: function(){
     this.model.destroy();
     this.remove();
+  },
+
+  togglePurchased: function(e) {
+    var checked = $(e.target).is(":checked");
+    this.model.set('purchased', checked);
+    this.model.save();
   },
 
   render: function(){

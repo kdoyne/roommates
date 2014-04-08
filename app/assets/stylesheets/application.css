@@ -19,6 +19,11 @@
 /*rgb(219,223,221) grey*/
 /*rgb(244,244,225) tan*/
  
+
+input[type="checkbox"] {
+  width: 20px;
+}
+
 h1 {
   font-family: 'Droid Sans', sans-serif;
   font-weight: 700;

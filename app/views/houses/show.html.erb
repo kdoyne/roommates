@@ -108,6 +108,7 @@
   </script>
 
   <script type="text/template" class="shoppingtemplate">
+    <input type="checkbox" <%%= shopping.get("purchased") ? "checked" : "" %>/>
     <span><%%= shopping.get("item") %></span>
     <button class="delete_shopping">Delete</button>
   </script>
@@ -127,9 +128,6 @@
       }
     });
 
-    var createDeleteEvent = function(){
-      $(<button>).text("Delete").addClass("delete_event");
-    };
 
     $("button.new_bill").click(function(){
       if($("div.new_bill").is(":hidden")){

@@ -51,6 +51,8 @@ group :development, :test do
   gem "capybara-webkit"
   gem "selenium-webdriver"
   gem "database_cleaner"
+  gem "rb-readline", "~> 0.5.0"
+  gem "rack_session_access"
 end
 
 # Use ActiveModel has_secure_password

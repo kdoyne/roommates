@@ -1,5 +1,5 @@
 class HousesController < ApplicationController
-
+  
   def index
     @house = House.find_by name: params[:query]
     render json: @house
