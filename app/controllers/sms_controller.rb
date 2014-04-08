@@ -16,7 +16,7 @@ class SmsController < ApplicationController
 
         if @message_body.split(" ")[0] == "shopping"
           @shopping_list = @house.shoppings.map { |shopping| shopping.item }
-          @list = shopping_list.join(" , ")
+          @list = @shopping_list.join(" , ")
           reply(@list)
 
         else
