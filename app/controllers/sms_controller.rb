@@ -2,6 +2,7 @@ class SmsController < ApplicationController
 
   def method
     @client = Twilio::REST::Client.new TWILIO_SID, TWILIO_AUTH_TOKEN
+    # format for texts: Title, Date, Time
     @message_body = @client.account.messages.list[0].body
     @message_sender = params[:From][2..11]
     @title = @message_body.split(",")[0]
@@ -17,7 +18,10 @@ class SmsController < ApplicationController
         @user = User.find_by("phone_number = :phone_number", {:phone_number => @message_sender})
         @house = House.find_by(id: @user.house_id)
 
+        # searches database for events from that house that are on the same date
         if @house.events.find_by(date: @date) == nil
+
+          # creates event
           @event = Event.new
           @event.user = @user
           @event.title = @title
@@ -25,12 +29,15 @@ class SmsController < ApplicationController
           @event.time = @time
           @event.house = @user.house
           @event.save
-          if @event.created_at != nil 
+          if @event.created_at != nil
+              # if event is created 
             reply("confirmed!")
           else
+            # if event could not be saved
             reply("Please try again")
           end
         else 
+          # if there is an event on the same date
           reply("There is already an event on that date")
         end
       else
@@ -40,6 +47,7 @@ class SmsController < ApplicationController
     end
   end
 
+# sets up template for replies from twilio
   def reply(message)
     number_to_send_to = @message_sender
     @twilio_client = Twilio::REST::Client.new TWILIO_SID, TWILIO_AUTH_TOKEN

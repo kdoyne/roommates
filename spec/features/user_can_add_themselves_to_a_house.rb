@@ -22,6 +22,7 @@ describe "a user can add themselves to a house", :js => true  do
     expect(page).to have_content house.street_address
     fill_in :passcode, with: house.passcode 
     click_button "Confirm"
+    save_and_open_page
 
     expect(page).to have_content user_1.first_name
     expect(page).to have_content "Test"

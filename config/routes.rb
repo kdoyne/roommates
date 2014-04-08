@@ -12,6 +12,8 @@ Roommates::Application.routes.draw do
 
   resources :bills
 
+  resources :shoppings
+
   get '/sms', to: 'sms#method'
 
   get "/sessions", to: "sessions#new"

@@ -3,8 +3,7 @@
   <div id="house_info">
     <h1> <%= @house.name %> </h1>
     <h3> <%= @house.street_address %> </h3>
-
-  <!-- <div class="roommates"> -->
+    
     <ul>
       <% @house.users.each do |user| %>
         <li id="<%=user.id%>"><%= user.first_name%> - <%= user.email%> - <%= user.phone_number%> </li>
@@ -33,6 +32,7 @@
 
     <ul id="events"> 
     </ul>
+
   </div>
 
 
@@ -67,6 +67,25 @@
         <tr>
       </thead>
     </table>
+
+  </div>
+
+
+  <div class="shopping">
+    <h3>Shopping List</h3>
+    <button class="new_shopping">Add An Item</button>
+    <div class="new_shopping" style="display :none">
+      <form class="shopping">
+        <label>
+          Item <input type="text" name="item" id="item" />
+        </label>
+        <button class="shopping">Save</button>
+      </form>
+    </div>
+
+    <ul id="shopping"> 
+    </ul>
+
   </div>
 
 
@@ -74,7 +93,7 @@
     <span> Event: <%%= event.get("title") %></span>
     <span> Date: <%%= event.get("date") %></span>
     <span> Time: <%%= event.get("time") %></span>
-    <span> Added By: <%%= _.find(Roommates.users, function(user){return user.id == event.get("user_id")}).name %></span>
+    <span> Added By: <%%= $("li#"+(event.get("user_id"))).text().split(" - ")[0] %></span>
     <button class="delete_event">Delete</button>
   </script>
 
@@ -82,12 +101,17 @@
     <td> <%%= bill.get("name") %> </td>
     <td> <%%= "$"+bill.get("amount") %> </td>
     <td> <%%= bill.get("due_date") %> </td>
-    <td> <%%= _.find(Roommates.users, function(user){return user.id == bill.get("user_id")}).name  %> </td>
+    <td> <%%= $("li#"+(bill.get("user_id"))).text().split(" - ")[0] %> </td>
     <td> <%%= "$"+bill.get("split") %> </td>
-    <td> <a href=mailto:<%%=_.find(Roommates.users, function(user){return user.id == bill.get("user_id")}).email%>?cc=send@square.com&body=For&#32<%%=bill.get("name")%>&subject=Here&#39s&#32;<%%= "$"+bill.get("split") %> ><button class="send_money">Send Money </button></a></td>
+    <td> <a href=mailto:<%%=$("li#"+(bill.get("user_id"))).text().split(" - ")[1]%>?cc=send@square.com&body=For&#32<%%=bill.get("name")%>&subject=Here&#39s&#32;<%%= "$"+bill.get("amount")/($("ul").first().children().length) %> ><button class="send_money">Send Money </button></a></td>
     <td> <button class="delete_bill">Delete</button> </td>
   </script>
 
+  <script type="text/template" class="shoppingtemplate">
+    <span><%%= shopping.get("item") %></span>
+    <button class="delete_shopping">Delete</button>
+  </script>
+  
   <script type="text/javascript">
     Roommates.users = [];
     <% @house.users.each do |user| %>
@@ -103,11 +127,20 @@
       }
     });
 
-     $("button.new_bill").click(function() {
+    $("button.new_bill").click(function() {
       if ( $("div.new_bill").is(":hidden") ) {
         $("div.new_bill").slideDown("slow");
       } else {
         $("div.new_bill").hide();
+      }
+    });
+
+
+    $("button.new_shopping").click(function() {
+      if ( $("div.new_shopping").is(":hidden") ) {
+        $("div.new_shopping").slideDown("slow");
+      } else {
+        $("div.new_shopping").hide();
       }
     });
   </script>

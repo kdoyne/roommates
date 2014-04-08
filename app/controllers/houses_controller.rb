@@ -19,6 +19,7 @@ class HousesController < ApplicationController
   end
 
   def show
+    # binding.pry
     if current_user.house.id != params[:id].to_i
       render nothing: true, status: 401
     else

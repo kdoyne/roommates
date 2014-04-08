@@ -78,6 +78,16 @@ div.events {
   border-radius: 10px;
 }
 
+div.shopping {
+  padding: 10px;
+  width: 80%;
+  display: block;
+  background-color: rgb(244,244,225);
+  margin: 20px auto;
+  border-radius: 10px;
+}
+
+
 h3 {
   margin-left: 10px;
 }
@@ -120,7 +130,17 @@ ul#events li {
   padding-right: 10px;
 }
 
+ul#shopping li {
+  list-style-type: none;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 ul#events {
+  padding-left: 10px;
+}
+
+ul#shopping {
   padding-left: 10px;
 }
 
@@ -128,6 +148,13 @@ ul#events li:nth-child(odd) {
   background-color: rgb(130,175,116)
 }
 ul#events li:nth-child(even) {
+  background-color: rgb(190, 221, 167)
+}
+
+ul#shopping li:nth-child(odd) {
+  background-color: rgb(130,175,116)
+}
+ul#shopping li:nth-child(even) {
   background-color: rgb(190, 221, 167)
 }
 
@@ -155,6 +182,18 @@ button.new_event {
 
 button.new_bill {
   margin-left: 10px;
+}
+
+button.new_shopping {
+  margin-left: 10px;
+}
+
+button.delete_event {
+  margin-left: 20px;
+}
+
+button.delete_shopping {
+  margin-left: 20px;
 }
 
 a:visited {

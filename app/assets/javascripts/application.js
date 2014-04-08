@@ -19,6 +19,7 @@
 //= require events
 //= require bills
 //= require reminders
+//= require shoppings
 //= require add_house_to_user
 
 var Roommates = {};
