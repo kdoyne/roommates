@@ -1,4 +1,5 @@
 class SmsController < ApplicationController
+  require 'date'
 
   def method
     @client = Twilio::REST::Client.new TWILIO_SID, TWILIO_AUTH_TOKEN
@@ -32,7 +33,7 @@ class SmsController < ApplicationController
           @bill.amount = amount
           @bill.user_id = @user.id
           @bill.house_id = @house.id
-          @bill.due_date = "2014-04-25"
+          @bill.due_date = Date.today.to_s
           @bill.name = name.join(" ")
           @bill.split = @house.users.count
           @bill.save
