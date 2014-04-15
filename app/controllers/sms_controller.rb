@@ -33,12 +33,12 @@ class SmsController < ApplicationController
           @bill.house = @house
           @bill.due_date = "2014-04-25"
           @bill.name = name.join(" ")
-          @bill.save 
           @item.destroy
           if @bill.created_at != nil
             reply("removed item from shopping list, added to bills")
           else
             reply(@bill)
+            @bill.save
           end
         else
           # searches database for events from that house that are on the same date
