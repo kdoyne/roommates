@@ -32,7 +32,7 @@ class SmsController < ApplicationController
           @bill.user = @user
           @bill.house = @house
           @bill.due_date = Date.today
-          @bill.name = @item.name
+          @bill.name = @item.item
           @bill.save 
           @item.destroy
 
