@@ -34,6 +34,7 @@ class SmsController < ApplicationController
           @bill.house_id = @house.id
           @bill.due_date = "2014-04-25"
           @bill.name = name.join(" ")
+          @bill.split = @house.users.count
           @bill.save
           @item.destroy
           if @bill.created_at != nil
