@@ -36,9 +36,9 @@ class SmsController < ApplicationController
           @bill.name = name.join(" ")
           @bill.split = @house.users.count
           @bill.save
-          @item.destroy
+          @item.purchased = true
           if @bill.created_at != nil
-            reply("removed item from shopping list, added to bills")
+            reply("marked item as purchased, added to bills")
           else
             reply("#{@bill.amount}, #{@bill.user_id}, #{@bill.house_id}, #{@bill.due_date}, #{@bill.name}")
           end
