@@ -21,7 +21,7 @@ class SmsController < ApplicationController
 
         elsif @message_body.split(" ")[0] == "Purchased"
           name = []
-          @message_body.split(" ").each do
+          @message_body.split(" ").each do |item|
             unless item.include?("$") || item.include?("Purchased")
               name.push(item)
             end
