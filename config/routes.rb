@@ -2,17 +2,17 @@ Roommates::Application.routes.draw do
   
   root"welcome#index"
 
-  resources :users
+  resources :users, only: [:new, :create, :edit, :update, :destroy, :show]
 
-  resources :houses
+  resources :houses, only: [:show, :new, :create]
 
   resources :events do
     resources :reminders
   end
 
-  resources :bills
+  resources :bills, only: [:index, :create, :destroy]
 
-  resources :shoppings
+  resources :shoppings, only: [:index, :create, :update, :destroy]
 
   get '/sms', to: 'sms#method'
 
@@ -21,3 +21,6 @@ Roommates::Application.routes.draw do
   delete "/sessions", to: "sessions#delete"
 
 end
+
+
+# resources :products, only: [:show, :edit, :destroy, :create]

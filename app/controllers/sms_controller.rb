@@ -14,10 +14,27 @@ class SmsController < ApplicationController
         @user = User.find_by("phone_number = :phone_number", {:phone_number => @message_sender})
         @house = House.find_by(id: @user.house_id)
 
-        if @message_body.split(" ")[0] == "shopping"
+        if @message_body.split(" ")[0] == "Shopping"
           @shopping_list = @house.shoppings.map { |shopping| shopping.item }
           @list = @shopping_list.join(" , ")
           reply(@list)
+
+        elsif @message_body.split(" ")[0] == "Purchased"
+          name = []
+          @message_body.split(" ").each do
+            unless item.include?("$") || item.include?("Purchased")
+              name.push(item)
+            end
+          end
+          @item = @house.shoppings.find_by(item: name.join(" "))
+          @bill = Bill.new
+          @bill.amount = @message_body.split(" ").last
+          @bill.user = @user
+          @bill.house = @house
+          @bill.due_date = Date.today
+          @bill.name = @item.name
+          @bill.save 
+          @item.destroy
 
         else
           # searches database for events from that house that are on the same date
