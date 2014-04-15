@@ -37,6 +37,7 @@ class SmsController < ApplicationController
           @bill.split = @house.users.count
           @bill.save
           @item.purchased = true
+          @item.save
           if @bill.created_at != nil
             reply("marked item as purchased, added to bills")
           else
