@@ -31,7 +31,7 @@ class SmsController < ApplicationController
           @bill.amount = @message_body.split(" ").last
           @bill.user = @user
           @bill.house = @house
-          @bill.due_date = "2014.04.25"
+          @bill.due_date = "2014-04-25"
           @bill.name = @item.item
           @bill.save 
           @item.destroy
