@@ -38,7 +38,7 @@ class SmsController < ApplicationController
           if @bill.created_at != nil
             reply("removed item from shopping list, added to bills")
           else
-            reply("removed item from shopping list, could not add to bills")
+            reply(@bill)
           end
         else
           # searches database for events from that house that are on the same date
