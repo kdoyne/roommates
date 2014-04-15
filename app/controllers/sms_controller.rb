@@ -27,8 +27,9 @@ class SmsController < ApplicationController
             end
           end
           @item = @house.shoppings.find_by(item: name.join(" "))
+          amount = @message_body.split(" ").last.gsub("$", "")
           @bill = Bill.new
-          @bill.amount = @message_body.split(" ").last
+          @bill.amount = amount
           @bill.user_id = @user.id
           @bill.house_id = @house.id
           @bill.due_date = "2014-04-25"
