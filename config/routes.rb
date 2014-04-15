@@ -20,6 +20,9 @@ Roommates::Application.routes.draw do
   post "/sessions", to: "sessions#create"
   delete "/sessions", to: "sessions#delete"
 
+  get '/texting', to: 'welcome#texting', as: 'texting'
+
+
 end
 
 

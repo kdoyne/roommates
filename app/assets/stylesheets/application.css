@@ -40,6 +40,10 @@ h3 {
   margin-left: 10px;
 }
 
+div#texting h3 {
+  text-align: center;
+}
+
 body {
   background-color: rgb(190, 221, 167); 
   font-family: 'Droid Sans', sans-serif;
@@ -78,6 +82,15 @@ div.roommates {
   margin: 20px auto;
   border-radius: 10px;
   text-align: center;
+}
+
+div#texting {
+  padding: 10px;
+  width: 80%;
+  display: block;
+  background-color: rgb(244,244,225);
+  margin: 20px auto;
+  border-radius: 10px;
 }
 
 div.events {
@@ -258,5 +271,10 @@ div#house_info {
   display: block;
   margin: 0 auto;
   border-radius: 10px;
+}
+
+#spacer{
+  width: 25px;
+  display: inline-block;
 }
 
