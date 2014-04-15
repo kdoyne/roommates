@@ -35,6 +35,7 @@ class SmsController < ApplicationController
           @bill.name = @item.item
           @bill.save 
           @item.destroy
+          reply(name.join(" "))
 
         else
           # searches database for events from that house that are on the same date
