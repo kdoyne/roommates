@@ -225,8 +225,8 @@ a {
 }
 
 #splash {
-  padding: 20px;
-  width: 500px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   margin: 0 auto;
   text-align: center;
 }
@@ -277,4 +277,85 @@ div#house_info {
   width: 25px;
   display: inline-block;
 }
+
+/*CSS for landing page*/
+
+div#splash_title {
+  height: 150px;
+  padding-top: 50px;
+}
+
+div#splash_login {
+  padding-top: 3px;
+  height: 70px;
+  background-color: rgb(130,175,116);
+}
+
+div#splash_info {
+  height: 300px;
+  padding-top: 20px;
+}
+
+div.splash_iphone {
+  height: 350px; 
+  overflow: hidden;
+  width: 300px;
+  display: inline-block;
+  margin: 10px;
+}
+
+div.splash_iphone img {
+  width: 300px; 
+}
+
+div#splash_info_summary {
+  padding: 50px;
+  font-size: 1.5em;
+}
+
+div#splash_info_summary_bottom {
+  background-color: rgb(244,244,225);
+  height: 100px;
+  padding: 60px;
+  margin: 0px;
+  font-size: 1.5em;
+}
+
+div#splash_texting {
+  background-color: rgb(130,175,116);
+  padding-top: 10px;
+  padding-bottom: 0px;
+  margin-top: 0px;
+}
+
+div#icons {
+  background-color: rgb(130,175,116);
+  font-size: 1.2em;
+}
+
+.icon {
+  width: 100px;
+  display: inline-block;
+  padding: 20px 70px;
+}
+
+div.splash_icons {
+  display: inline-block;
+  width: 300px;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 

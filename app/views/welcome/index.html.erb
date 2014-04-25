@@ -1,7 +1,43 @@
 <div id="splash">
-  <h1>Welcome to RoomateHub</h1>
+  <div id="splash_title">
+    <h1>Welcome to RoomateHub</h1>
+  </div>
+  <div id="splash_login">
+    <h2><%= link_to "Log In", "/sessions" %>
 
-  <h2><%= link_to "Log In", "/sessions" %>
+    <%= link_to "Register", "/users/new" %></h2>
+  </div>
+  <div id="splash_info">
+    <div id="splash_info_summary">
+      Use this app to help maintain your household. 
+    </div>
 
-  <%= link_to "Register", "/users/new" %></h2>
+    <div id="icons">
+      <div class="splash_icons" id="splash_icon_calendar">
+        <img class="icon" src="http://i.imgur.com/KKMXBdk.png">
+        <p>Keep a calendar of events with your roommates.</p>
+      </div>
+      <div class="splash_icons" id="splash_icon_bills">
+        <img class="icon" src="http://i.imgur.com/giw9JVU.png">
+        <p>Track and split bills. Send money with Square Cash.</p>
+      </div>
+      <div class="splash_icons" id="splash_icon_shopping">
+        <img class="icon" src="http://i.imgur.com/1vTP2fc.png">
+        <p>Keep a shopping list for the apartment.</p>
+      </div>
+    </div>
+    <div id="splash_info_summary_bottom">
+      Text the website to add information on the go. Add events, get your shopping list, mark an item as purchased and make a bill.
+    </div>
+    <div id="splash_texting">
+      <div class="splash_iphone">
+        <img src="http://i.imgur.com/OBUNdp3.png">
+      </div>
+      <div class="splash_iphone">
+        <img src="http://i.imgur.com/ImrYEpB.png">
+      </div>
+      <div class="splash_iphone">
+        <img src="http://i.imgur.com/9zGgs6m.png">
+      </div>
+    </div>
 </div>
