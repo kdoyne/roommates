@@ -17,7 +17,7 @@ class SmsController < ApplicationController
 
         if @message_body.split(" ")[0] == "Shopping"
           @shopping_list = @house.shoppings.map { |shopping| shopping.item }
-          @list = @shopping_list.join(" , ")
+          @list = @shopping_list.join(", ")
           reply(@list)
 
         elsif @message_body.split(" ")[0] == "Purchased"
@@ -40,9 +40,9 @@ class SmsController < ApplicationController
           @item.purchased = true
           @item.save
           if @bill.created_at != nil
-            reply("marked item as purchased, added to bills")
+            reply("Marked item as purchased, added to bills")
           else
-            reply("#{@bill.amount}, #{@bill.user_id}, #{@bill.house_id}, #{@bill.due_date}, #{@bill.name}")
+            reply("Sorry, there was a problem. Go to the website to mark this as purchased.")
           end
         else
           # searches database for events from that house that are on the same date
