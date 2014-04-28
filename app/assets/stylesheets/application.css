@@ -306,7 +306,9 @@ div.splash_iphone {
 }
 
 div.splash_iphone img {
-  width: 300px; 
+  width: 300px;
+  margin: 0px;
+  padding: 0px; 
 }
 
 div#splash_info_summary {
@@ -324,9 +326,10 @@ div#splash_info_summary_bottom {
 
 div#splash_texting {
   background-color: rgb(130,175,116);
-  padding-top: 30px;
+  padding-top: 50px;
   padding-bottom: 0px;
   margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 div#icons {
@@ -345,6 +348,13 @@ div.splash_icons {
   width: 300px;
   padding: 30px 20px;
   text-align: center;
+}
+
+div#splash_allphones {
+  position: relative;
+  top: 150px;
+  padding: 0px;
+  margin: 0px;
 }
 
 

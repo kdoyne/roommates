@@ -1,6 +1,6 @@
 <div id="splash">
   <div id="splash_title">
-    <h1>Welcome to RoomateHub</h1>
+    <h1>Welcome to RoommateHub</h1>
   </div>
   <div id="splash_login">
     <h2><%= link_to "Log In", "/sessions" %>
@@ -31,14 +31,25 @@
       <br><br>Add events, get your shopping list, mark an item as purchased and make a bill.
     </div>
     <div id="splash_texting">
-      <div class="splash_iphone">
-        <img src="http://i.imgur.com/OBUNdp3.png">
-      </div>
-      <div class="splash_iphone">
-        <img src="http://i.imgur.com/ImrYEpB.png">
-      </div>
-      <div class="splash_iphone">
-        <img src="http://i.imgur.com/9zGgs6m.png">
+      <div id="splash_allphones">
+        <div class="splash_iphone">
+          <img src="http://i.imgur.com/OBUNdp3.png">
+        </div>
+        <div class="splash_iphone">
+          <img src="http://i.imgur.com/ImrYEpB.png">
+        </div>
+        <div class="splash_iphone">
+          <img src="http://i.imgur.com/9zGgs6m.png">
+        </div>
       </div>
     </div>
+  </div>
 </div>
+
+<script type="text/javascript">
+  $(window).on('scroll',function() {
+    $("#splash_allphones").css("-webkit-transform","translateY("+ (-$(window).scrollTop()*0.25) + "px)")
+  });
+</script>
+
+
