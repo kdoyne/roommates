@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require underscore
 //= require backbone
+//= require backbonerelational
 //= require_self
 //= require events
 //= require bills

@@ -1,5 +1,20 @@
-var Event = Backbone.Model.extend({
-  urlRoot: "/events"
+var Reminders = Backbone.RelationalModel.extend({
+  urlRoot: '/reminders',
+  idAttribute: '_.id',
+});
+
+var Event = Backbone.RelationalModel.extend({
+  urlRoot: "/events",
+  idAttribute: '_id',
+  relations: [{
+    type: Backbone.HasMany,
+    key: 'reminders',
+    relatedModel: 'Reminders',
+    reverseRelation: {
+      key: 'event',
+      includeInJSON: '_id',
+    },
+  }]
 });
 
 var EventCollection = Backbone.Collection.extend({
