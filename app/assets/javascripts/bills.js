@@ -66,11 +66,13 @@ var BillListView = Backbone.View.extend({
   }
 });
 
-$(document).ready(function(){
-  Roommates.bills = new BillCollection();
-  Roommates.billListView = new BillListView({collection: Roommates.bills});
-  Roommates.billFormView = new BillFormView({collection: Roommates.bills});
-  Roommates.bills.fetch();
-});
+var callBills = function(){
+  $(document).ready(function(){
+    Roommates.bills = new BillCollection();
+    Roommates.billListView = new BillListView({collection: Roommates.bills});
+    Roommates.billFormView = new BillFormView({collection: Roommates.bills});
+    Roommates.bills.fetch();
+  });
+}
 
 

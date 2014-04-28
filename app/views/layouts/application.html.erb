@@ -13,7 +13,7 @@
   <header>
     <span><%= link_to("Log Out #{current_user.first_name}", "/sessions", method:"delete") unless session[:user_id].nil? %></span><span id="spacer"></span>
     <span><%= link_to("Edit My Info", edit_user_path(current_user)) unless session[:user_id].nil? %></span><span id="spacer"></span>
-    <span><%= link_to("Home", house_path(current_user.house_id)) unless session[:user_id].nil? %></span><span id="spacer"></span>
+    <span><%= link_to("Home", house_path(current_user.house_id)) unless current_user.nil? || current_user.house_id.nil? %></span><span id="spacer"></span>
     <span><%= link_to("Texting Hints", texting_path) %></span> 
   </header>
 

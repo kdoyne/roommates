@@ -73,9 +73,11 @@ var ShoppingListView = Backbone.View.extend({
   }
 });
 
-$(document).ready(function(){
-  Roommates.shopping = new ShoppingCollection();
-  Roommates.shoppingListView = new ShoppingListView({collection: Roommates.shopping});
-  Roommates.shoppingFormView = new ShoppingFormView({collection: Roommates.shopping});
-  Roommates.shopping.fetch();
-});
+var callShoppings = function(){
+  $(document).ready(function(){
+    Roommates.shopping = new ShoppingCollection();
+    Roommates.shoppingListView = new ShoppingListView({collection: Roommates.shopping});
+    Roommates.shoppingFormView = new ShoppingFormView({collection: Roommates.shopping});
+    Roommates.shopping.fetch();
+  });
+}

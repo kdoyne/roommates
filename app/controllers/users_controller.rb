@@ -1,65 +1,65 @@
 class UsersController < ApplicationController
 
-def new
-  @user = User.new
-end
+  def new
+    @user = User.new
+  end
 
-def create
-  @user = User.new(user_params)
-  if @user.save
+  def create
+    @user = User.new(user_params)
+    if @user.save
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
       render(:new)
     end
-end
+  end
 
-def show
-  @user = current_user
-  @houses = House.all
-  render :show
-  
-end
+  def show
+    @user = current_user
+    @houses = House.all
+    render :show
+    
+  end
 
-def edit
-  @user = current_user
-  render(:edit) 
-end
+  def edit
+    @user = current_user
+    render(:edit) 
+  end
 
-def update
-  @user = current_user
-  if params[:house_id] != nil
-    @house = House.find(params[:house_id])
-    if params[:passcode] == @house.passcode
-      @user.house_id = params[:house_id]
-      @user.save
-      respond_to do |format|
-        format.html { render :edit }
-        format.json { render json: @user.house }
+  def update
+    @user = current_user
+    if params[:house_id] != nil
+      @house = House.find(params[:house_id])
+      if params[:passcode] == @house.passcode
+        @user.house_id = params[:house_id]
+        @user.save
+        respond_to do |format|
+          format.html { render :edit }
+          format.json { render json: @user.house }
+        end
+      else
+        render nothing: :true, status: 401
       end
     else
-      render nothing: :true, status: 401
+      @user.update(user_params)
+      redirect_to house_path(id: current_user.house)
     end
-  else
-    @user.update(user_params)
-    redirect_to house_path(id: current_user.house)
   end
-end
 
-def destroy
-  if @user = current_user || current_user.is_admin?
-    session[:user_id] = nil
-    @user.destroy
-    redirect_to root_path
-  else
-    render nothing: true, status: 401
+  def destroy
+    if @user = current_user || current_user.is_admin?
+      session[:user_id] = nil
+      @user.destroy
+      redirect_to root_path
+    else
+      render nothing: true, status: 401
+    end
   end
-end
 
-private
+  private
 
-def user_params
-  params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :phone_number, :house_id)
-end
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :phone_number, :house_id)
+  end
 
 end

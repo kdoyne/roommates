@@ -67,9 +67,11 @@ var EventListView = Backbone.View.extend({
   }
 });
 
-$(document).ready(function(){
-  Roommates.events = new EventCollection();
-  Roommates.eventListView = new EventListView({collection: Roommates.events});
-  Roommates.eventFormView = new EventFormView({collection: Roommates.events});
-  Roommates.events.fetch();
-});
+var callEvents = function(){
+  $(document).ready(function(){
+    Roommates.events = new EventCollection();
+    Roommates.eventListView = new EventListView({collection: Roommates.events});
+    Roommates.eventFormView = new EventFormView({collection: Roommates.events});
+    Roommates.events.fetch();
+  });
+}
