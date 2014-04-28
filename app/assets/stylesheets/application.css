@@ -287,7 +287,8 @@ div#splash_title {
 
 div#splash_login {
   padding-top: 3px;
-  height: 70px;
+  height: 120px;
+  line-height: 1.5;
   background-color: rgb(130,175,116);
 }
 
