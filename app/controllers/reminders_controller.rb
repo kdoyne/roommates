@@ -8,16 +8,31 @@ class RemindersController < ApplicationController
     end
   end
 
-  def new
-
-  end
-
   def create
-
+    @reminder = Reminder.new(reminder_params)
+    @reminder.user_id = current_user.id
+    @reminder.house_id = current_house.id
+    if @reminder.save
+      render json: @reminder
+    else
+      render status: 400, nothing: true
+    end
   end
 
   def destroy
+    @reminder = Reminder.find(params[:id])
 
+    if @reminder.destroy 
+      render json: {}
+    else
+      render status: 400, nothing: true
+    end
   end
 
+private
+
+  def reminder_params
+    params.require(:reminder).permit(:message, :date, :time, :event)
+  end
 end
+

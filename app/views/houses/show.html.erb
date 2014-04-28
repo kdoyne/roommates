@@ -95,6 +95,14 @@
     <span><strong> Time: </strong><%%= event.get("time") %></span>
     <span><strong> Added By: </strong><%%= $("li#"+(event.get("user_id"))).text().split(" - ")[0] %></span>
     <button class="delete_event">Delete</button>
+    <button class="show_reminders">Reminders</button>
+  </script>
+
+  <script type="text/template" class="remindertemplate">
+    <ul>
+    <li><span>Date: <%%=reminder.get("date") %></span>
+    <span>Message: <%%=reminder.get("message") %></span></li>
+    </ul>
   </script>
 
   <script type="text/template" class="billtemplate">
@@ -147,8 +155,8 @@
     });
 
     callBills();
-    callEvents();
     callShoppings();
+    callEvents();
   </script>
 
 <%end%>
