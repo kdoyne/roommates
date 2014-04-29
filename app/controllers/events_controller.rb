@@ -19,6 +19,16 @@ class EventsController < ApplicationController
     end
   end
 
+  def update
+    @event = Event.find(params[:id])
+    @event.remind_on = @event.date - 1
+    if @event.update(event_params)
+      render json: @event
+    else
+      render status: 400, nothing: true
+    end
+  end
+
   def destroy
     @event = Event.find(params[:id])
 
@@ -32,7 +42,7 @@ class EventsController < ApplicationController
 private
 
   def event_params
-    params.require(:event).permit(:title, :date, :time)
+    params.require(:event).permit(:title, :date, :time, :remind_on, :created_at, :id, :user_id, :house_id, :updated_at)
   end
 
 end

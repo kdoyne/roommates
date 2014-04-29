@@ -16,12 +16,19 @@ var EventView = Backbone.View.extend({
   },
 
   events: {
-    "click button.delete_event": "destroy"
+    "click button.delete_event": "destroy",
+    "change input[type='checkbox']": "toggleRemind"
   },
 
   destroy: function(){
     this.model.destroy();
     this.remove();
+  },
+
+  toggleRemind: function(e){
+    var checked = $(e.target).is(":checked");
+    this.model.set('remind_on', this.date);
+    this.model.save();
   },
 
   render: function(){

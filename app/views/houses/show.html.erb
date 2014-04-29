@@ -94,15 +94,8 @@
     <span><strong> Date: </strong><%%= event.get("date") %></span>
     <span><strong> Time: </strong><%%= event.get("time") %></span>
     <span><strong> Added By: </strong><%%= $("li#"+(event.get("user_id"))).text().split(" - ")[0] %></span>
+    <span><strong>Remind Us:</strong></span><input type="checkbox" <%%= event.get("remind_on") ? "checked" : "" %>/>
     <button class="delete_event">Delete</button>
-    <button class="show_reminders">Reminders</button>
-  </script>
-
-  <script type="text/template" class="remindertemplate">
-    <ul>
-    <li><span>Date: <%%=reminder.get("date") %></span>
-    <span>Message: <%%=reminder.get("message") %></span></li>
-    </ul>
   </script>
 
   <script type="text/template" class="billtemplate">

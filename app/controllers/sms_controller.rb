@@ -92,17 +92,19 @@ class SmsController < ApplicationController
   end
 
   def remind(reminder)
-    number_to_send_to = User.where(house_id: reminder.house_id)
-    @twilio_client = Twilio::REST::Client.new TWILIO_SID, TWILIO_AUTH_TOKEN
-    @twilio_client.account.messages.create(
-      :from => "+1#{TWILIO_NUMBER}",
-      :to => @message_sender,
-      :body => reminder.message
-      )
+    users_to_send_to = User.where(house_id: event.house_id)
+    users_to_send_to.each do |user|
+      @twilio_client = Twilio::REST::Client.new TWILIO_SID, TWILIO_AUTH_TOKEN
+      @twilio_client.account.messages.create(
+        :from => "+1#{TWILIO_NUMBER}",
+        :to => user.phone_number,
+        :body => reminder.message
+        )
+    end
   end
 
   def send_reminders
-    @reminders = Reminders.where(date: Date.today.to_s)
+    @reminders = Reminders.where(date: Date.today)
     @reminders.each do |reminder|
       remind(reminder)
     end
