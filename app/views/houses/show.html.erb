@@ -26,6 +26,9 @@
         <label>
           Time <input type="time" name="time" id="time" />
         </label>
+        <label>
+          Remind Us <input type="checkbox" name="remind" id="remind" />
+        </label>
         <button class="events">Save</button>
       </form>
     </div>
@@ -94,7 +97,7 @@
     <span><strong> Date: </strong><%%= event.get("date") %></span>
     <span><strong> Time: </strong><%%= event.get("time") %></span>
     <span><strong> Added By: </strong><%%= $("li#"+(event.get("user_id"))).text().split(" - ")[0] %></span>
-    <span><strong>Remind Us:</strong></span><input type="checkbox" <%%= event.get("remind_on") ? "checked" : "" %>/>
+    <span><strong>Remind Us:</strong></span><input type="checkbox" <%%= event.get("remind") ? "checked" : "" %>/>
     <button class="delete_event">Delete</button>
   </script>
 

@@ -226,7 +226,7 @@ a {
 
 #splash {
   padding-top: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 0px;
   margin: 0 auto;
   text-align: center;
 }
@@ -303,6 +303,7 @@ div.splash_iphone {
   width: 300px;
   display: inline-block;
   margin: 10px;
+  margin-bottom: 0px;
 }
 
 div.splash_iphone img {

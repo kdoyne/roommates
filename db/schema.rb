@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140428194332) do
+ActiveRecord::Schema.define(version: 20140429172025) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20140428194332) do
     t.date     "date"
     t.string   "time"
     t.date     "remind_on"
+    t.boolean  "remind"
   end
 
   create_table "houses", force: true do |t|

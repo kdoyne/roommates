@@ -27,7 +27,7 @@ var EventView = Backbone.View.extend({
 
   toggleRemind: function(e){
     var checked = $(e.target).is(":checked");
-    this.model.set('remind_on', this.date);
+    this.model.set('remind', true);
     this.model.save();
   },
 

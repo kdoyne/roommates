@@ -21,7 +21,9 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find(params[:id])
-    @event.remind_on = @event.date - 1
+    if @event.remind = true
+      @event.remind_on = @event.date - 1
+    end
     if @event.update(event_params)
       render json: @event
     else

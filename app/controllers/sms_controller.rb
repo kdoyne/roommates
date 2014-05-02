@@ -98,13 +98,13 @@ class SmsController < ApplicationController
       @twilio_client.account.messages.create(
         :from => "+1#{TWILIO_NUMBER}",
         :to => user.phone_number,
-        :body => reminder.message
+        :body => event.title
         )
     end
   end
 
   def send_reminders
-    @reminders = Reminders.where(date: Date.today)
+    @reminders = Event.where(remind_on: Date.today && remind: true)
     @reminders.each do |reminder|
       remind(reminder)
     end
