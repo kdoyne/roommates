@@ -103,11 +103,13 @@ class SmsController < ApplicationController
     end
   end
 
-  # def send_reminders
-  #   @reminders = Event.where(remind_on: Date.today && remind: true)
-  #   @reminders.each do |reminder|
-  #     remind(reminder)
-  #   end
-  # end
+  def send_reminders
+    @reminders = Event.where(date: Date.tomorrow)
+    @reminders.each do |reminder|
+      if reminder.remind == true  
+        remind(reminder)
+      end
+    end
+  end
 
 end

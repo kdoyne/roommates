@@ -26,8 +26,10 @@ var EventView = Backbone.View.extend({
   },
 
   toggleRemind: function(e){
-    var checked = $(e.target).is(":checked");
-    this.model.set('remind', true);
+    if($(e.target).is(":checked")){
+      this.model.set('remind', true);}
+    else
+      {this.model.set('remind', false);}
     this.model.save();
   },
 
@@ -51,7 +53,8 @@ var EventFormView = Backbone.View.extend({
     var title = this.el.elements["event"].value;
     var date = this.el.elements["date"].value;
     var time = this.el.elements["time"].value;
-    this.collection.create({title: title, date: date, time: time});
+    var remind = function(){ if(this.el.elements["remind"].value = "on"){ return "true" } };
+    this.collection.create({remind: remind, title: title, date: date, time: time});
     this.el.reset();
   }
 

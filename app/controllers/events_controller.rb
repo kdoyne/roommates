@@ -9,6 +9,7 @@ class EventsController < ApplicationController
   end
 
   def create
+    binding.pry
     @event = Event.new(event_params)
     @event.user_id = current_user.id
     @event.house_id = current_house.id
@@ -21,7 +22,7 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find(params[:id])
-    if @event.remind = true
+    if @event.remind == true
       @event.remind_on = @event.date - 1
     end
     if @event.update(event_params)
@@ -44,7 +45,7 @@ class EventsController < ApplicationController
 private
 
   def event_params
-    params.require(:event).permit(:title, :date, :time, :remind_on, :created_at, :id, :user_id, :house_id, :updated_at)
+    params.require(:event).permit(:title, :date, :time, :remind, :created_at, :id, :user_id, :house_id, :updated_at)
   end
 
 end
