@@ -53,8 +53,8 @@ var EventFormView = Backbone.View.extend({
     var title = this.el.elements["event"].value;
     var date = this.el.elements["date"].value;
     var time = this.el.elements["time"].value;
-    var remind = function(){ if(this.el.elements["remind"].value = "on"){ return "true" } };
-    this.collection.create({remind: remind, title: title, date: date, time: time});
+    var remind = function(element){ if(element.value === "on"){ return "true" } };
+    this.collection.create({remind: remind(this.el.elements["remind"]), title: title, date: date, time: time});
     this.el.reset();
   }
 
