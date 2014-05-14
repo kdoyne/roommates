@@ -9,6 +9,7 @@ class EventsController < ApplicationController
   end
 
   def create
+    binding.pry
     @event = Event.new(event_params)
     @event.user_id = current_user.id
     @event.house_id = current_house.id
